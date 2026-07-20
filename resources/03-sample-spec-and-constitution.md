@@ -1,98 +1,110 @@
-# Sample Spec & Constitution — "ClearNews"
+# PRD — The Signal: a newsreader for young students
 
-A worked example. **A model to imitate, not to copy.** Your product is not this product.
+**Status:** Clickable demo (v2) · **Owner:** [you] · **Last updated:** July 2026
 
----
+## 1. Problem
 
-# Part 1 · The Constitution
+Young students (middle/high school) are surrounded by news but rarely engage
+with it: adult news is too dense, social feeds are algorithmic and unsourced,
+and nothing connects current events to their own lives or classrooms. They
+graduate news-illiterate — unable to name sources, spot bias, or explain why an
+event matters.
 
-Seven rules. Each one traceable to an ethical lens. Imperative, specific, checkable.
+## 2. Goals
 
-A Constitution is not a values statement. It is a list of things your product may
-**never** do — written so that a machine, or a classmate, can check whether you broke one.
+1. Help students **understand what's happening** in the real world, daily.
+2. **Connect events to their lives** — every story answers "why does this
+   matter to *me*?"
+3. Expose **different perspectives** and teach source/bias awareness.
+4. Get students to **question their own assumptions** (reason before results).
+5. Let them **share what's worth sharing** with their class community.
+6. (v2) Support **bilingual reading (EN/中文)** and lightweight **vocabulary
+   learning** in context.
 
-### ClearNews Constitution
+**Non-goals:** breaking news speed; comprehensive coverage; open social
+network (community = the student's own class); gamification points/streaks.
 
-1. **We optimise for understanding, not time-on-app.** No streaks, no infinite scroll,
-   no notifications. *(consequences)*
+## 3. Audience
 
-2. **We collect no personal data from a child.** First names or codes only — never a
-   real identity. *(rights)*
+- Primary: students ~11–16, reading on phones, short attention windows.
+- Secondary: teachers who seed discussion from the day's stories and polls.
 
-3. **Every story shows where it came from.** No naked claims. *(rights)*
+## 4. Product shape
 
-4. **A glossary entry never uses a harder word to explain a hard word,** and never
-   carries an opinion. *(virtue)*
+A mobile, story-a-screen swipeable feed. **3 stories per day + 1 recap card.**
+Deliberately finite — "done for today" is a feature.
 
-5. **The AI may only explain a word that actually appears in the story.** It never
-   invents a term, and if it does not know what a word means here, it writes
-   `NEEDS HUMAN` rather than guessing. *(rights)*
+### 4.1 Story card (the core unit)
 
-6. **The AI proposes; a human decides.** No glossary entry reaches a student until a
-   person has approved it. *(rights)*
+- **Hook** — one arresting sentence.
+- **Fact** — the story in ≤3 sentences, concrete numbers.
+- **Why it matters to you** — explicit reframe to the student's life.
+- **Source + lean label** — e.g. "Reuters · International wire service".
+  Always visible; this is the media-literacy layer.
+- **Lens tag** — each story is tagged Social currency / Your money / The
+  bigger picture, so the day covers different ways news touches a life.
+- Actions: **Go deeper** (bottom sheet) and **Share**.
 
-7. **Every student's take is their own.** The AI never writes a student's opinion for
-   them. *(virtue)*
+### 4.2 Go-deeper sheet (per story)
 
-> **Why Article 7 matters most:** this product exists to make children think, not to
-> think for them. It is also the most interesting one for the red team to attack.
+- **Background** — the one concept you need (e.g. what a tariff is).
+- **Two Sides** — strongest honest version of each camp's argument.
+- **Poll** — three-step flow, in this order, non-negotiable:
+  1. Vote (no results visible)
+  2. Explain your reasoning in one sentence (skippable, but asked)
+  3. Reveal class results + your reasoning back to you
+  Rationale: committing and articulating *before* seeing the majority
+  counters conformity bias. Never collapse to instant-reveal.
+- **Class** — classmates' takes; agree (👍) or add your own.
 
----
+### 4.3 Community layer
 
-# Part 2 · The Spec
+- Share a story with **your take attached** to class or a friend.
+- "N classmates read this" on each card.
+- Recap card shows **class pulse**: takes shared, votes cast, and the most
+  contested poll ("worth bringing up tomorrow") — bridges app → classroom
+  discussion.
 
-**ClearNews — one-page spec**
+### 4.4 Recap card
 
-### 1. Problem
+"You can now explain: …" — restates the day as competence, not consumption.
+Ends with one-tap reflection and "come back tomorrow."
 
-Rural middle-schoolers want to follow world events, but the news is written for adults
-in English they cannot yet read — and they almost never get asked what they think
-about it.
+### 4.5 Bilingual + vocabulary (v2)
 
-*(Day 2 evidence: students said they "don't understand the words"; wish wall:
-"I hope AI can explain the news to us.")*
+- 中文/EN toggle in the header; translates all content and UI. Persisted.
+- **Curated glossary** per story (not a full dictionary): key terms get dotted
+  underlines; hover/tap shows meaning, pronunciation (respelling or pinyin),
+  and text-to-speech. User-generated takes stay in their original language.
 
-### 2. Users
+## 5. Tone & design principles
 
-Students aged 11–14 at ___ school, using a shared computer in the Zhong Gu classroom.
-Slow connection, English is a second language, little prior tech exposure.
+- Talk *with* students, not down: real numbers, real stakes, no babying.
+- Warm print-like feel (paper background, serif hooks) — calmer than a
+  social feed, friendlier than a newspaper.
+- Sentences short; vocabulary hard words glossed, not avoided.
+- No infinite scroll, no engagement dark patterns.
 
-### 3. The one thing it does
+## 6. Current state (this demo)
 
-Shows three short news stories a day, with the hard words explained — and lets a
-student say what they think.
+Static HTML/CSS/JS, no backend. All stories, poll percentages, classmate
+takes, and class stats are **mock data**. Language choice persists via
+localStorage; everything else resets on reload.
 
-### 4. What it must remember
 
-For each story: the text, where it came from, and which words were explained and how.
-For each student: which stories they voted on, and what they wrote.
+## 7. Decisions & next steps
 
-*(Plain English. The tables get named on Day 4, in the Plan.)*
 
-### 5. Guardrails
+- **Content pipeline (decided):** editors hand-pick ~3 stories per week; AI
+  adapts each story per student — grade level, reading interests, and
+  vocabulary level (including which glossary words to surface).
+- **Accounts, rosters & moderation (decided):** Google Sheets as the
+  lightweight backend for rosters and shared takes; teacher moderates via the
+  sheet. Revisit when scale demands a real backend.
+- **Teacher view (next up):** a web portal for teachers — seed polls, see
+  class pulse, review/moderate takes, export discussion prompts.
+- **Accessibility:** deferred for now.
+- **Poll-flow validation:** pilot with a real class to confirm students engage
+  with the "explain your reasoning" step rather than skipping it; rework the
+  flow if skip rate is high.
 
-See the Constitution, above.
-
-### 6. Out of scope (v1)
-
-No accounts, no feed, no notifications, no recommendation algorithm, no
-personalisation, no audio.
-
-### 7. Success test
-
-A student at ___ school, with nobody helping, reads one story, can say what happened,
-votes, and writes one sentence of their own.
-
----
-
-## How to use this example
-
-**Do:** copy the *shape* — seven short sections, one page, plain language, a success
-test someone could actually run.
-
-**Don't:** copy the content. If your spec says "plain-language news reader" and your
-team spent Day 2 hearing about something else entirely, you wrote down our idea
-instead of your evidence.
-
-**The test:** every claim in section 1 should be traceable to something a real person
-said to you on Day 2.
