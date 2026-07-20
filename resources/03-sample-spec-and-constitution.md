@@ -1,6 +1,6 @@
 # PRD — The Signal: a newsreader for young students
 
-**Status:** Clickable demo (v2) · **Owner:** [you] · **Last updated:** July 2026
+**Status:** Clickable demo (v2) · **Owner:** TKEthics · **Last updated:** July 2026
 
 ## 1. Problem
 
