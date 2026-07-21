@@ -1,6 +1,8 @@
 # PRD — The Signal: a newsreader for young students
 
 **Status:** Clickable demo (v2) · **Owner:** TKEthics · **Last updated:** July 2026
+## The Google drive link for team collaboration 
+https://drive.google.com/drive/folders/1LvWWX0OVjBFuHMynFjC7sSpxxegxIP7r
 
 ## 1. Problem
 
