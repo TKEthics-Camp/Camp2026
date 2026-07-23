@@ -1,8 +1,8 @@
 # Backend Connection Card
 # 后端接入卡
 
-**Day 4, 10:20–10:40.** Do this **before** you write any product code.
-**第四天上午。** 在写任何产品代码**之前**完成这一步。
+**Day 5.** Do this **before** you write any product code.
+**第五天。** 在写任何产品代码**之前**完成这一步。
 
 ---
 
